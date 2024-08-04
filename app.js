@@ -1,11 +1,19 @@
 var express = require("express");
 var config = require("config");
 var bodyParser = require("body-parser");
-
-var app = express();
+var session = require("express-session")
+var app = express(); 
 //body parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
+
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: config.get("secret_key"),
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}))
 
 app.set("views", __dirname + "/app/views");
 app.set("view engine", "ejs");

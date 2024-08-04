@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include("../layouts/head") %>
+
+    <script src="https://cdn.tiny.cloud/1/51z63d2jsglhqevbeb6k1c3gdev0dwczbddh6nce6jw0gu30/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({selector: "textarea"})</script>
+</head>
+<body>
+    <div class="container">
+    <%- include("../layouts/nav") %>
+    
+    <form method="post" action="/admin/post/new">
+        <h3>Create a new post</h3>
+        <div id="signupalert" style="<%if (!data || !data.error) { %>display: none;<% } %>" class="alert alert-danger">
+            <p>Error:</p>
+            <%if (data && data.error) {%>
+             <span><%= data.error%></span>
+            <% }%>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Title</label>
+          <input name="title" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Type title...">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Author</label>
+            <input name="author" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Type your name...">
+          </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Content</label>
+          <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="form-group pull-right">
+            <input type="submit" value="Submit" class="btn btn-success">
+        </div>
+      </form>
+    </div>
+</body>
+</html>

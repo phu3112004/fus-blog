@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard User</title>
+    <%- include("layouts/head") %>
+</head>
+<body>
+    <%- include("layouts/nav") %> 
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Email</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Created Time</th>
+            <th scope="col">Updated Time</th> 
+          </tr>
+        </thead>
+        <tbody>
+            <% if(data && data.users) {%>
+                <% for(var i=0; i < data.users.length; i++) {%>
+                    <tr> 
+                        <td><%= data.users[i].id %></td>
+                        <td><%= data.users[i].email %></td>
+                        <td><%= data.users[i].first_name %></td>
+                        <td><%= data.users[i].last_name %></td>
+                        <td><%= data.users[i].created_at %></td>
+                        <td><%= data.users[i].updated_at %></td>  
+                      </tr>               
+                    <%}
+                %>
+            <%}%> 
+        </tbody>
+      </table> 
+</body>
+</html>

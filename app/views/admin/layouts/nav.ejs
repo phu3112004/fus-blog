@@ -1,0 +1,11 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/admin">Blog Admin</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="<%if(data.posts && data) {%>active<%}%>"><a href="/admin/post">Posts</a></li>
+        <li class="<%if(data.users && data) {%>active<%}%>"><a href="/admin/user">Users</a></li> 
+      </ul>
+    </div>
+  </nav>

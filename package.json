@@ -15,6 +15,7 @@
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
+    "html-to-text": "^9.0.5",
     "mysql": "^2.18.1",
     "mysql2": "^3.11.0",
     "node": "file:",
