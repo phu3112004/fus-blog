@@ -6,7 +6,7 @@ function getAllPosts(){
     
     var defer =  q.defer();
 
-    var query = conn.query('SELECT * FROM posts', function(err,result){
+    var query = conn.query('SELECT * FROM posts ORDER BY updated_at DESC', function(err,result){
         if(err){
             defer.reject(err); 
         }

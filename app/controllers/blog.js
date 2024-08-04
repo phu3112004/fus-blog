@@ -3,6 +3,7 @@ var router = express.Router();
 var post_md = require("../models/post")
 var contact_md = require("../models/contact")
 const {htmlToText} = require("html-to-text"); 
+var moment = require("moment");
 
 router.get("/", function(req, res) {
     var data = post_md.getAllPosts();
@@ -14,6 +15,7 @@ router.get("/", function(req, res) {
             if (post.content.length > 47) {
                 post.content = post.content.substring(0, 47) + "....";
             }
+            post.updated_at =  moment(post.updated_at).format('YYYY/MM/DD HH:mm');
         });
         var data = {
             posts: posts,

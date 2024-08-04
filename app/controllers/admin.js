@@ -98,14 +98,11 @@ router.post("/post/new", function(req, res){
         res.render("admin/post/new", {data: {error: "Do not leave content blank!"}})
 
     }
-    else if(params.author.trim().length == 0){
-        res.render("admin/post/new", {data: {error: "Do not leave author blank!"}})
-    }
     else{
         var now = new Date();
         params.created_at = now;
         params.updated_at = now;
-    
+        params.author = req.session.user.last_name +" " + req.session.user.first_name;
         var data = post_md.addPost(params);
         data.then(function(result){
             res.redirect("/admin")
