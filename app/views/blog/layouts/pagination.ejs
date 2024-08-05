@@ -1,0 +1,54 @@
+<% 
+if(data && data.page === 1 && data.page === data.limitPage){%> 
+    <br>
+<%}
+else if(data && data.page === 1){%>
+    <nav class="d-flex justify-content-end" aria-label="...">
+        <ul class="pagination">  
+          <li class="page-item">
+            <a class="page-link active" href="#"><%= data.page %><span class="sr-only">(current)</span></a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="/blog/page/<%= data.page + 1 %>"><%= data.page + 1 %></a>
+          </li> 
+          <li class="page-item">
+            <a class="page-link" href="/blog/page/<%= data.limitPage %>">Lastest</a>
+          </li>
+        </ul>
+    </nav>
+<%}
+else if (data && data.page === data.limitPage){%>
+    <nav class="d-flex justify-content-end" aria-label="...">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" href="/blog" tabindex="-1">First</a>
+          </li> 
+          <li class="page-item"><a class="page-link" href="/blog/page/<%= data.page - 1%>"><%= data.page - 1 %></a></li>
+          <li class="page-item">
+            <a class="page-link active" href="#"><%= data.page %><span class="sr-only">(current)</span></a>
+          </li> 
+        </ul>
+    </nav>
+<%}
+else {%>
+    <nav class="d-flex justify-content-end" aria-label="...">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" href="/blog" tabindex="-1">First</a>
+          </li> 
+          <li class="page-item "><a class="page-link" href="/blog/page/<%= data.page - 1%>"><%= data.page - 1 %></a></li>
+          <li class="page-item">
+            <a class="page-link active" href="#"><%= data.page %><span class="sr-only">(current)</span></a>
+          </li> 
+          <li class="page-item">
+            <a class="page-link" href="/blog/page/<%= data.page + 1 %>"><%= data.page + 1 %></a>
+          </li> 
+          <li class="page-item">
+            <a class="page-link" href="/blog/page/<%= data.limitPage %>">Lastest</a>
+          </li>
+        </ul>
+    </nav>
+<%}
+
+%>
+

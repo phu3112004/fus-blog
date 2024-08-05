@@ -6,25 +6,69 @@ const {htmlToText} = require("html-to-text");
 var moment = require("moment");
 
 router.get("/", function(req, res) {
-    var data = post_md.getAllPosts();
-    data.then(function(posts){
-        posts.forEach(post => {
-            post.content = htmlToText(post.content, {
-                wordwrap: true
+    var page = 1;
+    var limit = 5;
+    var data = post_md.getAllPostsByLimitOffset(limit, page - 1);
+
+    post_md.countPosts()
+    .then(function(result) {
+        var numberOfPosts = parseInt(result[0].count);
+        var limitPage = Math.ceil(numberOfPosts / limit); 
+        return data.then(function(posts) {
+            posts.forEach(post => {
+                post.content = htmlToText(post.content, {
+                    wordwrap: true
+                });
+                if (post.content.length > 47) {
+                    post.content = post.content.substring(0, 47) + "....";
+                }
+                post.updated_at = moment(post.updated_at).format('YYYY/MM/DD HH:mm');
             });
-            if (post.content.length > 47) {
-                post.content = post.content.substring(0, 47) + "....";
-            }
-            post.updated_at =  moment(post.updated_at).format('YYYY/MM/DD HH:mm');
+            var data = {
+                posts: posts,
+                limitPage: limitPage,
+                page: page,
+                error: false
+            };
+            res.render("blog/index", { data: data });
         });
-        var data = {
-            posts: posts,
-            error: false
-        }
-        res.render("blog/index", {data: data})
-    }).catch(function(err){
-        res.render("blog/index", {data: {error: "Cannot get posts datas"}})
     })
+    .catch(function(err) {
+        res.render("blog/index", { data: { error: "Cannot get number of posts data" } });
+    });
+})
+router.get("/page/:page", function(req, res) {
+    var page = parseInt(req.params.page);
+    var limit = 5;
+    var offset = limit*(page - 1);
+    var data = post_md.getAllPostsByLimitOffset(limit, offset);
+
+    post_md.countPosts()
+    .then(function(result) {
+        var numberOfPosts = parseInt(result[0].count);
+        var limitPage = Math.ceil(numberOfPosts / limit); 
+        return data.then(function(posts) {
+            posts.forEach(post => {
+                post.content = htmlToText(post.content, {
+                    wordwrap: true
+                });
+                if (post.content.length > 47) {
+                    post.content = post.content.substring(0, 47) + "....";
+                }
+                post.updated_at = moment(post.updated_at).format('YYYY/MM/DD HH:mm');
+            });
+            var data = {
+                posts: posts,
+                limitPage: limitPage,
+                page: page,
+                error: false
+            };
+            res.render("blog/index", { data: data });
+        });
+    })
+    .catch(function(err) {
+        res.render("blog/index", { data: { error: "Cannot get number of posts data" } });
+    });
 })
 
 router.get("/post/:id", function(req, res){

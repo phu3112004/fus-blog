@@ -16,6 +16,35 @@ function getAllPosts(){
     })
     return defer.promise
 }
+function getAllPostsByLimitOffset(limit, offset){
+    
+    var defer =  q.defer();
+
+    var query = conn.query('SELECT * FROM posts ORDER BY updated_at DESC LIMIT ? OFFSET ?', [limit, offset], function(err,result){
+        if(err){
+            defer.reject(err); 
+        }
+        else{
+            defer.resolve(result);
+        }
+    })
+    return defer.promise
+}
+
+function countPosts(){
+    var defer =  q.defer();
+
+    var query = conn.query('SELECT COUNT(*) AS count FROM posts', function(err,result){
+        if(err){
+            defer.reject(err); 
+        }
+        else{
+            defer.resolve(result);
+        }
+    })
+    return defer.promise
+}
+
 function addPost(params){
     if(params){
         var defer =  q.defer();
@@ -83,5 +112,7 @@ module.exports = {
     addPost,
     getPostByID,
     updatedPost,
-    deletePost
+    deletePost,
+    getAllPostsByLimitOffset,
+    countPosts
 }
