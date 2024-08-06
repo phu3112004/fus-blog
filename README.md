@@ -30,6 +30,10 @@ Fu's Blog is a web application that allows users to view blog posts, navigate th
     - Accessible to the blog's admin for managing blog posts.
     - Features for adding, editing, and deleting blog posts.
 
+2. **User Management**
+    - Admin can view information about all users.
+    - Provides functionality for login and registration of users.
+
 ## Technologies Used
 
 - **Front-end**: HTML, CSS, JavaScript, EJS, Bootstrap
