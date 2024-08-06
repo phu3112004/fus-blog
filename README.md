@@ -111,10 +111,6 @@ Welcome contributions to enhance the functionality and features of this travel w
 
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
-## Contact
-
-For any inquiries or feedback, please contact us through the Contact page on the blog.
-
 ## Video Demo
 [Link to video](https://drive.google.com/file/d/1TR1v5ILfFtP8AN4xpY6wTwggxdjIg5B3/view?usp=drive_link)
 
