@@ -52,24 +52,25 @@ Fu's Blog is a web application that allows users to view blog posts, navigate th
 
 4. **Configure the application:**
     - Update the database configuration in `config/default.json` and add:
-   ```
-   {
-    "server":{
-        "host": "0.0.0.0",
-        "port": 3000
-    },
-    "mysql":{
-        "host": "localhost",
-        "port": 3306,
-        "database": your_database,
-        "user": your_username,
-        "password": your_password
-    },
-    "salt": 10,
-    "secret_key": "secret_key"
-    }
-     
-    ```
+
+      ```bash
+       {
+        "server":{
+            "host": "0.0.0.0",
+            "port": 3000
+        },
+        "mysql":{
+            "host": "localhost",
+            "port": 3306,
+            "database": your_database,
+            "user": your_username,
+            "password": your_password
+        },
+        "salt": 10,
+        "secret_key": "secret_key"
+        }
+         
+        ```
 
 5. **Run the application:**
     ```bash
