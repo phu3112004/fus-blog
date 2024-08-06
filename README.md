@@ -90,7 +90,7 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 For any inquiries or feedback, please contact us through the Contact page on the blog.
 
 ## Video Demo
-[https://drive.google.com/file/d/1PMy3A4GR2rZj7-FersC2IdSdWpOb7Okz/view?usp=drive_link](https://drive.google.com/file/d/1PMy3A4GR2rZj7-FersC2IdSdWpOb7Okz/view?usp=drive_link)
+[Link to video](https://drive.google.com/file/d/1TR1v5ILfFtP8AN4xpY6wTwggxdjIg5B3/view?usp=drive_link)
 ---
 
 Enjoy using Fu's Blog!
