@@ -48,28 +48,29 @@ Fu's Blog is a web application that allows users to view blog posts, navigate th
 
 3. **Set up the database:**
     - Create a MySQL database.
-    - Run the SQL scripts provided in the `database` folder to set up the necessary tables.
+    - Run the SQL scripts provided in the `mysql` folder to set up the necessary tables.
 
 4. **Configure the application:**
-    - Update the database configuration in `config/database.json` and add:
-   ```
-   {
-    "server":{
-        "host": "0.0.0.0",
-        "port": 3000
-    },
-    "mysql":{
-        "host": "localhost",
-        "port": 3306,
-        "database": your_database,
-        "user": your_username,
-        "password": your_password
-    },
-    "salt": 10,
-    "secret_key": "secret_key"
-    }
-     
-    ```
+    - Update the database configuration in `config/default.json` and add:
+
+      ```bash
+       {
+        "server":{
+            "host": "0.0.0.0",
+            "port": 3000
+        },
+        "mysql":{
+            "host": "localhost",
+            "port": 3306,
+            "database": your_database,
+            "user": your_username,
+            "password": your_password
+        },
+        "salt": 10,
+        "secret_key": "secret_key"
+        }
+         
+        ```
 
 5. **Run the application:**
     ```bash
