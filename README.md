@@ -55,7 +55,7 @@ Fu's Blog is a web application that allows users to view blog posts, navigate th
 
 5. **Run the application:**
     ```bash
-    npm start
+    node app.js
     ```
 
 6. **Access the application:**
