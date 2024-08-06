@@ -20,6 +20,9 @@ Fu's Blog is a web application that allows users to view blog posts, navigate th
 
 4. **Contact Page**
     - Allows users to send messages to the blog's admin with fields for name, email, phone number, and message.
+      
+5. **Responsive Supported**
+   - Allows use on all platforms.
 
 ### Admin Interface
 
