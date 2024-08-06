@@ -59,7 +59,7 @@ Fu's Blog is a web application that allows users to view blog posts, navigate th
     ```
 
 6. **Access the application:**
-    - Open a web browser and go to `http://localhost:3000`.
+    - Open a web browser and go to `http://localhost:3000/blog`.
 
 ## Usage
 
