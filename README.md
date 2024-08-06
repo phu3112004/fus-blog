@@ -48,10 +48,10 @@ Fu's Blog is a web application that allows users to view blog posts, navigate th
 
 3. **Set up the database:**
     - Create a MySQL database.
-    - Run the SQL scripts provided in the `database` folder to set up the necessary tables.
+    - Run the SQL scripts provided in the `mysql` folder to set up the necessary tables.
 
 4. **Configure the application:**
-    - Update the database configuration in `config/database.json` and add:
+    - Update the database configuration in `config/default.json` and add:
    ```
    {
     "server":{
