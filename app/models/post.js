@@ -30,6 +30,20 @@ function getAllPostsByLimitOffset(limit, offset){
     })
     return defer.promise
 }
+function getAllPostsByUserID(user_id){
+    
+    var defer =  q.defer();
+
+    var query = conn.query('SELECT * FROM posts WHERE user_id = ? ORDER BY updated_at DESC', [user_id], function(err,result){
+        if(err){
+            defer.reject(err); 
+        }
+        else{
+            defer.resolve(result);
+        }
+    })
+    return defer.promise
+}
 
 function countPosts(){
     var defer =  q.defer();
@@ -114,5 +128,6 @@ module.exports = {
     updatedPost,
     deletePost,
     getAllPostsByLimitOffset,
-    countPosts
+    countPosts,
+    getAllPostsByUserID
 }
