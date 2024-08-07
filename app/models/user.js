@@ -51,8 +51,26 @@ function getUserByEmail(email){
      
     return false;
 }
+
+function updateUser(params){
+    if(params){
+        var defer =  q.defer();
+
+        var query = conn.query('UPDATE users SET first_name = ?, last_name = ?, updated_at = ? WHERE id = ?', [params.first_name, params.last_name, new Date(), params.id], function(err, result){
+            if(err){
+                defer.reject(err); 
+            }
+            else{
+                defer.resolve(result);
+            }
+        })
+        return defer.promise
+    }
+    else return false
+}
 module.exports = {
     addUser,
     getUserByEmail,
-    getAllUsers
+    getAllUsers,
+    updateUser
 }

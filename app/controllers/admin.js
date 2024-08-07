@@ -227,4 +227,47 @@ router.get("/logout", function(req, res) {
     });
 });
 
+router.get("/profile", function(req, res) {
+    if (!req.session.user) {
+        res.redirect("/admin/login");
+    } else { 
+        var email = req.session.user.email; 
+        var data = user_md.getUserByEmail(email)
+        if (data) {
+            data.then(function(users) {
+                var user = users[0];
+                var data = {
+                    user: user,
+                    error: false
+                };
+                res.render("admin/profile", { data: data });
+            }).catch(function(error) {
+                var data = { error: "Cannot find user" };
+                res.render("admin/profile", { data: data });
+            });
+        } else {
+            res.render("admin/profile", { data: { error: "Cannot find user" } });
+        }
+    }
+});
+
+router.put("/profile", function(req, res) {
+    if (!req.session.user) {
+        res.json({ status_code: 401, error: "Unauthorized" });
+    } else {
+        var params = req.body;
+        var data = user_md.updateUser(params);
+
+        if (data) {
+            data.then(function(result) {
+                res.json({ status_code: 200 });
+            }).catch(function(err) {
+                res.json({ status_code: 500 });
+            });
+        } else {
+            res.json({ status_code: 500 });
+        }
+    }
+});
+
 module.exports = router;

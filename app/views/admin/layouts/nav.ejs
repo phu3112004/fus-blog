@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<!-- <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="/admin">Blog Admin</a>
@@ -9,7 +9,40 @@
       <ul class="nav navbar-nav">
         <li class="<%if(data.posts && data) {%>active<%}%>"><a href="/admin/post">Your Posts</a></li>
         <li class="<%if(data.users && data) {%>active<%}%>"><a href="/admin/user">Users</a></li> 
-        <li><a href="/admin/logout">Log out</a></li> 
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown link
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>  -->
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/admin">Admin</a>
+      </div>
+      
+      <ul class="nav navbar-nav">
+        <li><a href="/blog">Blog Page</a></li> 
+        <li class="<%if(data.posts && data) {%>active<%}%>"><a href="/admin/post">Your Posts</a></li>
+        <li class="<%if(data.users && data) {%>active<%}%>"><a href="/admin/user">All Users</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/admin/profile">View Profile</a></li>
+            <li><a href="/admin/logout">Log out</a></li> 
+          </ul>
+        </li>
       </ul>
     </div>
   </nav>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title> 
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <%- include("layouts/nav")%>
+    <div class="container">
+        <div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Your Profile</div>
+                </div>
+                <div class="panel-body" >
+                    <form id="signupform" class="form-horizontal" role="form" method="post" action="/admin/profile">
+                        <div id="signupalert" style="<%if (!data || !data.error) { %>display: none;<% } %>" class="alert alert-danger">
+                            <p>Error:</p>
+                            <%if (data && data.error) {%>
+                             <span><%= data.error%></span>
+                            <% }%>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="col-md-3 control-label">Email</label>
+                            <div class="col-md-9">
+                                <h4><%if(data && data.user){%> <%= data.user.email%> <%}%></h4>
+                            </div>
+                        </div> 
+                        <input class="id" type="hidden" name="id" value="<%if (data && data.user) {%><%= data.user.id%><%}%>">
+                        <div class="form-group">
+                            <label for="firstname" class="col-md-3 control-label">First Name</label>
+                            <div class="col-md-9">
+                                <input id="firstname" type="text" class="form-control firstName" name="firstname" value="<%if(data && data.user){%> <%= data.user.first_name%> <%}%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname" class="col-md-3 control-label">Last Name</label>
+                            <div class="col-md-9">
+                                <input id="lastname" type="text" class="form-control lastName" name="lastname" placeholder="Last Name" value="<%if(data && data.user){%> <%= data.user.last_name%><%}%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <!-- Button -->
+                            <div class="col-md-offset-3 col-md-9">
+                                <input id="btn-save" type="button" class="btn btn-info disabled" value="Save" disabled />
+                            </div>
+                        </div> 
+                    </form>
+                 </div>
+            </div>
+         </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            const originalData = {
+                firstname: $('#firstname').val().trim(),
+                lastname: $('#lastname').val().trim()
+            };
+
+            function validateForm() {
+                const firstname = $('#firstname').val().trim();
+                const lastname = $('#lastname').val().trim();
+
+                const isChanged = firstname !== originalData.firstname || lastname !== originalData.lastname;
+                const isNotEmpty = firstname !== "" && lastname !== "";
+
+                if (isChanged && isNotEmpty) {
+                    $('#btn-save').removeClass('disabled').prop('disabled', false);
+                } else {
+                    $('#btn-save').addClass('disabled').prop('disabled', true);
+                }
+            }
+
+            $('input[type="text"]').on('input', validateForm);
+            validateForm(); // initial validation on page load
+        });
+    </script>
+    <script type="text/javascript" src="/static/js/user.js"></script>
+</body>
+</html>
