@@ -121,4 +121,38 @@ router.post("/contact", function(req, res){
     }
     
 })
+
+router.get("/search", function(req, res) {
+    var query = req.query.search; 
+ 
+    if (query.trim().length > 0) { 
+        var data = post_md.searchPosts(query);
+
+        data.then(function(posts) {
+            posts.forEach(post => {
+                post.content = htmlToText(post.content, {
+                    wordwrap: true
+                });
+                if (post.content.length > 47) {
+                    post.content = post.content.substring(0, 47) + "....";
+                }
+            });
+
+            var data = {
+                posts: posts,
+                page: 1,
+                limitPage: 1,
+                query: query,
+                error: false
+            };
+
+            res.render("blog/index", { data: data });
+        }).catch(function(err) {
+            res.render("blog/index", { data: { error: "Cannot get posts data" } });
+        });
+    } else {
+        res.redirect('/');
+    }
+});
+
 module.exports = router;

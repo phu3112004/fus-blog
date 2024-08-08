@@ -121,6 +121,24 @@ function deletePost(id){
     }
     else return false
 }
+
+function searchPosts(query) { 
+    if(query){
+        var defer =  q.defer();
+        var searchTerm = '%' + query + '%';
+        var query = conn.query('SELECT * FROM posts WHERE title LIKE ? OR content LIKE ?', [searchTerm, searchTerm], function(err, result){
+            if(err){
+                defer.reject(err); 
+            }
+            else{
+                defer.resolve(result);
+            }
+        })
+        return defer.promise
+    }
+    else return false 
+};
+
 module.exports = {
     getAllPosts,
     addPost,
@@ -129,5 +147,6 @@ module.exports = {
     deletePost,
     getAllPostsByLimitOffset,
     countPosts,
-    getAllPostsByUserID
+    getAllPostsByUserID,
+    searchPosts
 }
