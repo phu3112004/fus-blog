@@ -108,7 +108,7 @@ Fu's Blog is a web application that allows users to view blog posts, navigate th
 Welcome contributions to enhance the functionality and features of this travel website. Please fork the repository and submit pull requests for review.
 
 ## Video Demo
-[Link to video](https://drive.google.com/file/d/1TR1v5ILfFtP8AN4xpY6wTwggxdjIg5B3/view?usp=drive_link)
+[Link to video](https://drive.google.com/file/d/1Qm0WXxU20dV5QN8p12ip1GLc0vPeArEt/view?usp=sharing)
 
 ---
 
