@@ -10,9 +10,8 @@
     <script>tinymce.init({selector: "textarea"})</script>
 </head>
 <body>
-    <div class="container">
     <%- include("../layouts/nav") %>
-    
+    <div class="container">
     <form method="post" action="/admin/post/new">
         <h3>Create a new post</h3>
         <div id="signupalert" style="<%if (!data || !data.error) { %>display: none;<% } %>" class="alert alert-danger">
