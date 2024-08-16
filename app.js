@@ -3,6 +3,7 @@ var config = require("config");
 var bodyParser = require("body-parser");
 var session = require("express-session")
 var app = express(); 
+var socketio = require("socket.io")
 //body parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
@@ -27,6 +28,9 @@ app.use(controllers);
 
 var host = config.get("server.host");
 var port = config.get("server.port");
-app.listen(port, host, function(){
+
+var server = app.listen(port, host, function(){
     console.log("run on port 3000")
 })
+
+var io = socketio(server);
