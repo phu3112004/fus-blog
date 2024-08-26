@@ -1,0 +1,12 @@
+#back-button-container {
+    position: fixed;
+    left: 0;
+    top: 20%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: none; /* Ẩn nút mặc định */
+}
+
+#back-button {
+    margin-left: 10px;
+}
